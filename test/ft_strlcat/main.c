@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:35:02 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/08 09:01:27 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/09 15:13:02 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ int	strlcat_is_diff(int n, char *mem, char *dst, char *src, size_t dstsize)
 	strlcpy(mem, dst, 32);
 	x = ft_strlcat(mem, src, dstsize);
 	y = strdup(mem);
-	printf("Test %3d:", n);
 	if (a != x || strcmp(b, y))
 	{
-		printf(" FAILED.\n");
+		printf("Test %3d FAILED.\n", n);
 		printf("dst: %s\n", dst);
 		printf("src :%s\n", src);
 		printf("dstsize: %zu\n", dstsize);
@@ -52,7 +51,6 @@ int	strlcat_is_diff(int n, char *mem, char *dst, char *src, size_t dstsize)
 		printf("ft_strlcat(dst, src, dstsize): %zu %s\n", x, y);
 		return (1);
 	}
-	printf(" PASSED!\n");
 	return (0);
 }
 
@@ -62,28 +60,31 @@ int	main(void)
 	char	*s;
 	int		i;
 	size_t	j;
+	int		errors;
 
 	s = "A cat is not a dog. A cat is a cat.";
+	errors = 0;
 	i = 1;
 	/* Intended usage */
 	if (strlcat_is_diff(i++, mem, "A", " cat is not a dog.", 32))
-		return (1);
+		errors++;
 	if (strlcat_is_diff(i++, mem, "", "A cat is not a dog.", 32))
-		return (1);
+		errors++;
 	if (strlcat_is_diff(i++, mem, "A cat", " is not a dog.", 32))
-		return (1);
+		errors++;
 	/* dstsize not reflective of true dst size */
 	j = 0;
 	while (j < 32)
 		if (strlcat_is_diff(i++, mem, "A cat", " is not a dog.", j++))
-			return (1);
+			errors++;
 	j = 0;
 	while (j < 32)
 		if (strlcat_is_diff(i++, mem, "", s, j++))
-			return (1);
+			errors++;
 	/* dst is longer than dstsize */
 	if (strlcat_is_diff(i, mem, s, ".", 32))
-		return (1);
-	printf("All tests passed.\n");
+		errors++;
+	if (errors == 0)
+		printf("All tests passed.\n");
 	return (0);
 }
