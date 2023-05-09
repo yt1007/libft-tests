@@ -6,14 +6,14 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:45:10 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/08 14:06:23 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/09 15:01:02 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-int	ft_atoi(char *str);
+int	ft_atoi(const char *str);
 
 int	atoi_is_diff(char *str)
 {
