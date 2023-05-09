@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:17:45 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/08 10:18:45 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/09 15:17:17 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	strrchr_is_diff(char *s, int c)
 {
 	if (strrchr(s, c) != ft_strrchr(s, c))
 	{
+		printf("s: %s\nc: %c\n", s, c);
 		printf("%p: %s\n", strrchr(s, c), strrchr(s, c));
 		printf("%p: %s\n", ft_strrchr(s, c), ft_strrchr(s, c));
 		return (1);
