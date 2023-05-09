@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:18:42 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/05 15:00:29 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/09 15:14:45 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	strlcpy_is_diff(char *dst, char *src, size_t dstsize)
 	reset_mem(dst);
 	x = ft_strlcpy(dst, src, dstsize);
 	y = strdup(dst);
-	printf("Test %3zu:", dstsize);
 	if (a != x || strcmp(b, y))
 	{
 		reset_mem(dst);
+		printf("Test %3zu:", dstsize);
 		printf(" FAILED.\n");
 		printf("dst: %s\n", dst);
 		printf("src :%s\n", src);
@@ -52,7 +52,6 @@ int	strlcpy_is_diff(char *dst, char *src, size_t dstsize)
 		printf("ft_strlcpy(dst, src, dstsize): %zu %s\n", x, y);
 		return (1);
 	}
-	printf(" PASSED!\n");
 	return (0);
 }
 
@@ -62,15 +61,18 @@ int	main(void)
 	char	*src;
 	char	*dst;
 	int		i;
+	int		errors;
 
 	src = "A string of characters";
 	dst = mem;
+	errors = 0;
 	i = -1;
 	while (++i < 130)
 	{
 		if (strlcpy_is_diff(dst, src, i))
-			return (1);
+			errors++;
 	}
-	printf("All tests passed.\n");
+	if (errors == 0)
+		printf("All tests passed.\n");
 	return (0);
 }
