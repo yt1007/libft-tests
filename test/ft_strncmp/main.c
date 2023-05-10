@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:25:39 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/08 10:34:08 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/10 17:35:18 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,30 @@ int	strncmp_is_diff(char *s1, char *s2, size_t n)
 int	main(void)
 {
 	int	i;
+	int	errors;
 
+	errors = 0;
 	i = 0;
 	while (i < 8)
 		if (strncmp_is_diff("panic", "panicky", i++))
-			return (1);
+			errors++;
 	i = 0;
 	while (i < 8)
 		if (strncmp_is_diff("panicky", "panic", i++))
-			return (1);
+			errors++;
 	if (strncmp_is_diff("", "", 0))
-		return (1);
+		errors++;
 	if (strncmp_is_diff("", "", 1))
-		return (1);
+		errors++;
 	if (strncmp_is_diff("", "panic", 0))
-		return (1);
+		errors++;
 	if (strncmp_is_diff("", "panic", 1))
-		return (1);
+		errors++;
 	if (strncmp_is_diff("panic", "", 0))
-		return (1);
+		errors++;
 	if (strncmp_is_diff("panic", "", 1))
-		return (1);
-	printf("All tests passed.\n");
+		errors++;
+	if (errors == 0)
+		printf("All tests passed.\n");
 	return (0);
 }
