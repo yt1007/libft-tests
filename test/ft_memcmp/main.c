@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 11:25:56 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/08 11:27:33 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/11 08:33:46 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,18 @@
 
 int	ft_memcmp(void *s1, void *s2, size_t n);
 
-int	memcmp_is_diff(char *s1, char *s2, size_t n)
+int	memcmp_is_diff(void *s1, void *s2, size_t n)
 {
-	if (memcmp(s1, s2, n) != ft_memcmp(s1, s2, n))
+	int	x;
+	int	y;
+
+	x = memcmp(s1, s2, n);
+	y = ft_memcmp(s1, s2, n);
+	if (x != y)
 	{
 		printf("String 1: %s\nString 2: %s\n", s1, s2);
-		printf("Results: %i (memcmp, %zu ch)\n", memcmp(s1, s2, n), n);
-		printf("Results: %i (ft_memcmp, %zu ch)\n", ft_memcmp(s1, s2, n), n);
+		printf("   memcmp(s1, s2, %zu): %i\n", n, x);
+		printf("ft_memcmp(s1, s2, %zu): %i\n", n, y);
 		printf("--\n");
 		return (1);
 	}
@@ -32,27 +37,30 @@ int	memcmp_is_diff(char *s1, char *s2, size_t n)
 int	main(void)
 {
 	int	i;
+	int	errors;
 
+	errors = 0;
 	i = 0;
-	while (i < 8)
+	while (i < 8 && i <= (int)strlen("panic"))
 		if (memcmp_is_diff("panic", "panicky", i++))
-			return (1);
+			errors++;
 	i = 0;
-	while (i < 8)
+	while (i < 8 && i <= (int)strlen("panic"))
 		if (memcmp_is_diff("panicky", "panic", i++))
-			return (1);
+			errors++;
 	if (memcmp_is_diff("", "", 0))
-		return (1);
+		errors++;
 	if (memcmp_is_diff("", "", 1))
-		return (1);
+		errors++;
 	if (memcmp_is_diff("", "panic", 0))
-		return (1);
+		errors++;
 	if (memcmp_is_diff("", "panic", 1))
-		return (1);
+		errors++;
 	if (memcmp_is_diff("panic", "", 0))
-		return (1);
+		errors++;
 	if (memcmp_is_diff("panic", "", 1))
-		return (1);
-	printf("All tests passed.\n");
+		errors++;
+	if (errors == 0)
+		printf("All tests passed.\n");
 	return (0);
 }
