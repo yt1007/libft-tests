@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:50:25 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/08 11:12:18 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/11 16:55:44 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	main(void)
 	char	*s;
 	int		c;
 	size_t	n;
+	int		errors;
 
+	errors = 0;
 	s = "The quick brown fox jumps over the lazy dog.";
 	c = -1;
 	while (++c < 256)
@@ -41,17 +43,20 @@ int	main(void)
 		n = -1;
 		while (++n <= strlen(s))
 			if (memchr_is_diff(s, c, n))
-				return (1);
+				errors++;
 	}
 	s = "";
 	if (memchr_is_diff(s, 0, 0))
-		return (1);
+		errors++;
+	if (memchr_is_diff(s, 0, 1))
+		errors++;
 	if (memchr_is_diff(s, 0, strlen(s)))
-		return (1);
+		errors++;
 	if (memchr_is_diff(s, 'A', 0))
-		return (1);
+		errors++;
 	if (memchr_is_diff(s, 'A', strlen(s)))
-		return (1);
-	printf("All tests passed.\n");
+		errors++;
+	if (errors == 0)
+		printf("All tests passed.\n");
 	return (0);
 }
