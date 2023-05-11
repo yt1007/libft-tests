@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 18:24:12 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/09 18:35:05 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/11 09:05:39 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	ft_strtrim_isbad(char const *s1, char const *set, char *t)
 		return (0);
 	if (strcmp(str, t))
 	{
-		printf("s1: %s\nset: %s\n", s1, set);
-		printf("Expected string: %s\n", t);
-		printf("ft_strtrim(s1, set): %s\n", str);
+		printf("s1: \"%s\"\nset: \"%s\"\n", s1, set);
+		printf("    Expected output: \"%s\"\n\n", t);
+		printf("ft_strtrim(s1, set): \"%s\"\n", str);
 		return (1);
 	}
 	free(str);
@@ -45,6 +45,10 @@ int	main(void)
 	if (ft_strtrim_isbad("abcdefghij", "", "abcdefghij"))
 		errors++;
 	if (ft_strtrim_isbad("    abcde     ", " ", "abcde"))
+		errors++;
+	if (ft_strtrim_isbad("               ", " ", ""))
+		errors++;
+	if (ft_strtrim_isbad("      i         ", " i", ""))
 		errors++;
 	if (ft_strtrim_isbad("", "", ""))
 		errors++;
