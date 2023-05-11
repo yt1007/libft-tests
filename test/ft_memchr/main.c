@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:50:25 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/11 16:55:44 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/11 16:59:01 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ int	main(void)
 	if (memchr_is_diff(s, 0, 1))
 		errors++;
 	if (memchr_is_diff(s, 0, strlen(s)))
+		errors++;
+	if (memchr_is_diff(s, 0, strlen(s) + 1))
+		errors++;
+	if (memchr_is_diff(s, 0, strlen(s) + 2))
 		errors++;
 	if (memchr_is_diff(s, 'A', 0))
 		errors++;
