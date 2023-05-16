@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 08:52:17 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/09 15:09:47 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/11 17:05:39 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ int	main(void)
 	if (memcpy_is_diff(dst, src, strlen(src)))
 		errors++;
 	src = "";
+	if (memcpy_is_diff(dst, src, 0))
+		errors++;
+	if (memcpy_is_diff(dst, src, 1))
+		errors++;
+	src = NULL;
 	if (memcpy_is_diff(dst, src, 0))
 		errors++;
 	if (memcpy_is_diff(dst, src, 1))
