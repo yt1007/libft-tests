@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:49:02 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/10 15:55:53 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/16 17:32:00 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ int	main(void)
 	char	*t3[10] = {"This", "is", "a", "f*cking", "long", "a$$", "string",
 		"of", "characters.", 0};
 	if (ft_split_isbad(s, c, t3))
+		errors++;
+	if (ft_split_isbad(0, 0, 0))
 		errors++;
 	if (errors == 0)
 		ft_putstr("All tests passed.\n");
