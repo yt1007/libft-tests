@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 15:01:13 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/08 15:48:31 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/16 17:50:26 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	main(void)
 		}
 		i++;
 	}
+	if (calloc_is_diff(0, 0))
+		errors++;
 	if (errors == 0)
 		printf("All tests passed.\n");
 	return (0);
