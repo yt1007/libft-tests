@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:25:39 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/10 17:35:18 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/16 13:10:00 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int	main(void)
 	if (strncmp_is_diff("panic", "", 0))
 		errors++;
 	if (strncmp_is_diff("panic", "", 1))
+		errors++;
+	if (strncmp_is_diff("\200", "\0", 0))
+		errors++;
+	if (strncmp_is_diff("\200", "\0", 1))
 		errors++;
 	if (errors == 0)
 		printf("All tests passed.\n");
