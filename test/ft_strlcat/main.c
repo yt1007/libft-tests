@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:35:02 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/09 15:13:02 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/16 13:37:30 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,17 @@ int	main(void)
 	/* dst is longer than dstsize */
 	if (strlcat_is_diff(i, mem, s, ".", 32))
 		errors++;
+	/* Empties */
+	j = -1;
+	while (++j < 2)
+	{
+		if (strlcat_is_diff(i, mem, "", "", j))
+			errors++;
+		if (strlcat_is_diff(i, mem, "A cat", "", j))
+			errors++;
+		if (strlcat_is_diff(i, mem, "", "A cat", j))
+			errors++;
+	}
 	if (errors == 0)
 		printf("All tests passed.\n");
 	return (0);
