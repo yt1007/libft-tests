@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:19:58 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/11 15:12:44 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/17 21:12:33 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,20 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 static void	cap(unsigned int i, char *s)
 {
-	if (i >= 0 && s[i] >= 'a' && s[i] <= 'z')
-		s[i] = s[i] - 'a' + 'A';
+	if (i >= 0 && *s >= 'a' && *s <= 'z')
+		*s = *s - 'a' + 'A';
 }
 
 static void	uncap(unsigned int i, char *s)
 {
-	if (i >= 0 && s[i] >= 'A' && s[i] <= 'Z')
-		s[i] = s[i] - 'A' + 'a';
+	if (i >= 0 && *s >= 'A' && *s <= 'Z')
+		*s = *s - 'A' + 'a';
+}
+
+static void	bump_by_index(unsigned int i, char *s)
+{
+	if (i >= 0)
+		*s += i;
 }
 
 static int	ft_striteri_isbad(char *s, void (*f)(unsigned int, char*), char *t)
@@ -64,6 +70,8 @@ int	main(void)
 	if (ft_striteri_isbad("", cap, ""))
 		errors++;
 	if (ft_striteri_isbad("", uncap, ""))
+		errors++;
+	if (ft_striteri_isbad("0000000000", bump_by_index, "0123456789"))
 		errors++;
 	if (errors == 0)
 		printf("All tests passed.\n");
