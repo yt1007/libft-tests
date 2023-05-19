@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:33:18 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/19 13:34:05 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/19 15:31:25 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,13 @@ int	main(void)
 		a = ft_itoa(--i);
 		if (strcmp((*lst)->content, a))
 		{
-			ft_putstr_fd(" current: ", 2);
-			ft_putendl_fd((*lst)->content,2);
-			ft_putstr_fd("expected: ", 2);
-			ft_putendl_fd(a, 2);
+			ft_putstr_fd("content: ", 2);
+			ft_putstr_fd((*lst)->content,2);
+			ft_putstr_fd(" =/= ", 2);
+			ft_putstr_fd(a, 2);
+			ft_putstr_fd(" (expected content); next addr: ", 2);
+			ft_putnbr_fd((unsigned int) (*lst)->next, 2);
+			ft_putendl_fd("\n", 2);
 			errors++;
 		}
 		if (a)
