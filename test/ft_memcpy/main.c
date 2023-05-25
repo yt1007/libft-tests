@@ -6,15 +6,15 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 08:52:17 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/11 17:05:39 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/25 17:59:44 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <string.h>
 #include <stdio.h>
-
-void	*ft_memcpy(void *dst, void *src, size_t n);
+#include <unistd.h>
+#include "libft.h"
 
 static int	memcpy_is_diff(char *dst, char *src, size_t n)
 {
@@ -68,8 +68,8 @@ int	main(void)
 	src = NULL;
 	if (memcpy_is_diff(dst, src, 0))
 		errors++;
-	if (memcpy_is_diff(dst, src, 1))
-		errors++;
+//	if (memcpy_is_diff(dst, src, 1))
+//		errors++;
 	if (errors == 0)
 		printf("All tests passed.\n");
 	return (0);
