@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:04:29 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/24 14:20:20 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/25 13:23:49 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	ft_addone(void *x)
 {
 	char	*c;
 
-	c = (char *) x;
-	*c = (*c) + 1;
+	c = x;
+	*c = *(ft_itoa(ft_atoi(x) + 1));
 }
 
 static void	ft_putlst(t_list *lst)
@@ -111,10 +111,13 @@ static int	ft_lstiter_isbad(int n)
 int	main(void)
 {
 	int	errors;
+	int	i;
 
 	errors = 0;
-	if (ft_lstiter_isbad(6))
-		errors++;
+	i = 0;
+	while (++i < 10)
+		if (ft_lstiter_isbad(i))
+			errors++;
 	if (errors == 0)
 		ft_putendl_fd("All tests passed.", 2);
 	return (0);
