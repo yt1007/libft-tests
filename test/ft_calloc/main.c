@@ -6,15 +6,14 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 15:01:13 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/16 17:50:26 by yetay            ###   ########.fr       */
+/*   Updated: 2023/05/25 18:04:55 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-void	*ft_calloc(size_t count, size_t size);
+#include "libft.h"
 
 int	calloc_is_diff(size_t count, size_t size)
 {
@@ -41,8 +40,10 @@ int	calloc_is_diff(size_t count, size_t size)
 		}
 		i++;
 	};
-	free(a);
-	free(b);
+	if (a)
+		free(a);
+	if (b)
+		free(b);
 	return (0);
 }
 
@@ -54,16 +55,16 @@ int	main(void)
 
 	errors = 0;
 	i = 0;
-	while (i < 5)
+	while (i < 1024)
 	{
 		j = 0;
-		while (j < 5)
+		while (j < 64)
 		{
 			if (calloc_is_diff(i, j))
 				errors++;
-			j++;
+			j += 4;
 		}
-		i++;
+		i += 4;
 	}
 	if (calloc_is_diff(0, 0))
 		errors++;
