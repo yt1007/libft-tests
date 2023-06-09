@@ -6,11 +6,11 @@
 #    By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/05 10:48:25 by yetay             #+#    #+#              #
-#    Updated: 2023/05/25 17:46:24 by yetay            ###   ########.fr        #
+#    Updated: 2023/06/09 13:43:03 by yetay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT_DIR = ..
+LIBFT_DIR = ../libft
 
 MANDATORY = ft_isalpha ft_isdigit ft_isalnum ft_isascii \
             ft_isprint ft_strlen ft_memset ft_bzero \

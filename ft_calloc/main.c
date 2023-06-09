@@ -6,7 +6,7 @@
 /*   By: yetay <yetay@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 15:01:13 by yetay             #+#    #+#             */
-/*   Updated: 2023/05/25 18:04:55 by yetay            ###   ########.fr       */
+/*   Updated: 2023/06/09 14:21:02 by yetay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ int	main(void)
 		i += 4;
 	}
 	if (calloc_is_diff(0, 0))
+		errors++;
+	if (calloc_is_diff(SIZE_MAX, 2))
+		errors++;
+	if (calloc_is_diff(SIZE_MAX, SIZE_MAX))
+		errors++;
+	if (calloc_is_diff(2, SIZE_MAX))
 		errors++;
 	if (errors == 0)
 		printf("All tests passed.\n");
